@@ -1,0 +1,12 @@
+<%= form_for(@project) do |f| %>
+  <%= render 'common/errors', resource: @project %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "#{ @project.new_record? ? 'Create' : 'Change' }" %>
+  </div>
+<% end %>
