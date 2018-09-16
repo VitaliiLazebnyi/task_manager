@@ -1,0 +1,32 @@
+<%= form_for(@task) do |f| %>
+  <%= render 'common/errors', resource: @task %>
+
+  <div class="field">
+    <%= f.label :project %><br>
+    <%= f.collection_select :project_id, Project.all, :id, :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :priority %><br>
+    <%= f.select :priority, [1,2,3,4] %>
+  </div>
+
+  <div class="field">
+    <%= f.label :deadline %><br>
+    <%= f.date_field :deadline, min: Date.today %>
+  </div>
+
+  <div class="field">
+    <%= f.label :done %><br>
+    <%= f.check_box :done %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "#{ @task.new_record? ? 'Create' : 'Change' }" %>
+  </div>
+<% end %>
