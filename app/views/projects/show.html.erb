@@ -17,9 +17,9 @@
     </thead>
 
     <tbody>
-    <%= render @project.tasks %>
+    <%= render @project.tasks.by_priority %>
     </tbody>
   </table>
 <% end %>
 
-<%= link_to 'Add new Task', new_task_path %>
+<%= link_to 'Add new Task', new_project_task_path(@project) %>

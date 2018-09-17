@@ -1,8 +1,13 @@
 <tr>
   <td><%= task.title %></td>
-  <td><%= task.priority %></td>
+  <td>
+    <%= form_tag update_priority_project_task_path(task.project, task), method: :patch do %>
+      <%= number_field_tag :priority, task.priority %>
+      <%= submit_tag 'C' %>
+    <% end %>
+  </td>
   <td><%= task.deadline %></td>
   <td><%= task.done ? 'Done.' : 'Not done.' %></td>
-  <td><%= link_to 'Edit', edit_task_path(task) %></td>
-  <td><%= link_to 'Remove', [task], method: :delete, data: { confirm: 'Please confirm. Are you sure?' } %></td>
+  <td><%= link_to 'Edit', edit_project_task_path(task.project, task) %></td>
+  <td><%= link_to 'Remove', [task.project, task], method: :delete, data: { confirm: 'Please confirm. Are you sure?' } %></td>
 </tr>
