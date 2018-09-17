@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy, :update_priority]
+  before_action :set_task, only: [:show, :edit, :update, :destroy, :update_priority, :switch_done]
   before_action :set_project, only: [:new, :edit, :update]
-  before_action :validate_ownership!, only: [:show, :edit, :update, :destroy, :update_priority]
+  before_action :validate_ownership!, only: [:show, :edit, :update, :destroy, :update_priority, :switch_done]
 
   def show; end
 
@@ -52,7 +52,13 @@ class TasksController < ApplicationController
 
     redirect_to @task.project
   end
-  
+
+  def switch_done
+    @task.switch_done
+
+    redirect_to @task.project
+  end
+
   private
 
   def set_project

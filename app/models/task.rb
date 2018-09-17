@@ -8,11 +8,12 @@ class Task < ActiveRecord::Base
 
   scope :by_priority, -> { order(:priority) }
 
-  def update_priority(pr)
-    pr = pr.to_i
-    pr = 4 if pr < 1 || pr > 4
+  def switch_done
+    update(done: !done)
+  end
 
-    self.update(priority: pr)
+  def update_priority(prior)
+    update(priority: prior)
   end
 
   private

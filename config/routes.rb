@@ -3,8 +3,8 @@ Rails.application.routes.draw do
 
   resources :projects do
     resources :tasks do
-      patch :update_status,   on: :member
       patch :update_priority, on: :member
+      patch :switch_done,     on: :member
     end
   end
 
