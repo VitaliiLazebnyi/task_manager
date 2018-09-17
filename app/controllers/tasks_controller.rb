@@ -52,7 +52,7 @@ class TasksController < ApplicationController
 
     redirect_to @task.project
   end
-
+  
   private
 
   def set_project
