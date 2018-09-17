@@ -1,18 +1,20 @@
 class ProjectsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :validate_ownership!, only: [:show, :edit, :update, :destroy]
 
   def index
-    @projects = Project.all
+    @projects = current_user.projects
   end
 
   def show; end
 
   def new
-    @project = Project.new
+    @project = current_user.projects.new
   end
 
   def create
-    @project = Project.new(project_params)
+    @project = current_user.projects.new(project_params)
 
     if @project.save
       # redirect_to action: 'index'
@@ -46,5 +48,9 @@ class ProjectsController < ApplicationController
 
   def project_params
     params.require(:project).permit(:title)
+  end
+
+  def validate_ownership!
+    redirect_to projects_path if @project.user != current_user
   end
 end

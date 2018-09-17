@@ -1,17 +1,24 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy, :update_priority]
-  before_action :set_project, only: [:new, :edit]
+  before_action :set_project, only: [:new, :edit, :update]
+  before_action :validate_ownership!, only: [:show, :edit, :update, :destroy, :update_priority]
 
   def show; end
 
   def new
-    @task    = Task.new
+    @task = Task.new
   end
 
   def create
     @task = Task.new(task_params)
 
-    if @task.save
+    if @task.project.user != current_user
+      # If user changes ProjectId manually
+      # in order to add task to someone
+      # just render 'new' page again
+      render :new
+      return
+    elsif @task.save
       redirect_to @task.project
     else
       render :new
@@ -21,7 +28,13 @@ class TasksController < ApplicationController
   def edit; end
 
   def update
-    if @task.update(task_params)
+    if @project.user != current_user
+      # Should be validated that user can't
+      # change tasks in project where he's
+      # not owner.
+      render :edit
+      return
+    elsif @task.update(task_params)
       redirect_to @task.project
     else
       render :edit
@@ -52,5 +65,9 @@ class TasksController < ApplicationController
 
   def task_params
     params.require(:task).permit(:project_id, :title, :priority, :deadline, :done)
+  end
+
+  def validate_ownership!
+    redirect_to projects_path if @task.project.user != current_user
   end
 end
