@@ -1,10 +1,11 @@
 require 'spec_helper'
 
 describe ProjectsController do
-  let(:project) { create(:project) }
+  login_user
+  let(:project) { create(:project, user: @user) }
 
   describe 'GET #index' do
-    let(:projects) { create_list(:project, 2) }
+    let(:projects) { create_list(:project, 2, user: @user) }
 
     before { get :index }
 
