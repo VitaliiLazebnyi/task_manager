@@ -17,9 +17,10 @@ class Task < ActiveRecord::Base
   end
 
   private
+
   def is_valid_deadline?
     if deadline && deadline < Date.today
-      errors.add(:deadline, 'Should be a date in future.')
+      errors.add(:deadline, 'Should be a date in future or empty')
     end
   end
 end
