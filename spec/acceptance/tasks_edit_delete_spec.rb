@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'date'
 
 feature 'Edit and remove Tasks', %q{
   I want to be able to add tasks to my project

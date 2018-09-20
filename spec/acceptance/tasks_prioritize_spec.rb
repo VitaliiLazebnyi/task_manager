@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'date'
 
 feature 'Task priorities', %q{
   I want to be able to prioritise tasks into a project
