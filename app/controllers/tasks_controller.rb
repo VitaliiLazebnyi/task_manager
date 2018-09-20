@@ -1,9 +1,11 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy, :update_priority, :switch_done]
-  before_action :set_project, only: [:new, :edit, :update]
-  before_action :validate_ownership!, only: [:show, :edit, :update, :destroy, :update_priority, :switch_done]
-
-  def show; end
+  before_action :authenticate_user!
+  before_action :set_task,
+                only: [:edit, :update, :destroy, :update_priority, :switch_done]
+  before_action :set_project,
+                only: [:new, :edit, :update]
+  before_action :validate_ownership!,
+                only: [:edit, :update, :destroy, :update_priority, :switch_done]
 
   def new
     @task = @project.tasks.new
