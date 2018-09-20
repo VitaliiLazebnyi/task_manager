@@ -1,9 +1,8 @@
 require 'spec_helper'
 
-feature 'Create question', %q{
+feature 'Create/Edit/Remove Projects', %q{
   I want to be able to create/update/delete projects
 } do
-
   given(:user) { create(:user) }
 
   scenario 'User can create project' do

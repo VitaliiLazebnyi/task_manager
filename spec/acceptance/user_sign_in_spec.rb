@@ -1,9 +1,8 @@
 require 'spec_helper'
 
-feature 'Create question', %q{
+feature 'User Sign In', %q{
   I want to be able sign in in order to use other functions.
 } do
-
   given(:user) { create(:user) }
 
   scenario 'Registered user tries to sign in' do
