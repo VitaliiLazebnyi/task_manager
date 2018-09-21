@@ -1,4 +1,21 @@
-Task manager<br /><br />
+To "start" the project:
+0. install linux, ruby, rails, bundler, etc...
+1. clone repo
+<b>https://github.com/VitaliyLazebny/task_manager.git</b>
+2. enter directory
+<b>cd task_manager</b>
+3. install all necessary gems:
+<b>bundler install</b>
+4. execute migrations
+<b>rails db:migrate</b>
+5. start server
+<b>rails s</b>
+6. open app in browser (defails url: <b>http://0.0.0.0:3000</b>)
+
+To execute tests do:
+<b>rspec</b>
+
+<h1>Task manager</h1>
 I'm a person who passionate about own productivity. I want to manage my tasks and projects more effectively. I need simple tool that support me in controlling my task-flow.<br />
 
 Functional requirements:<br />
