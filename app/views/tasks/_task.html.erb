@@ -9,9 +9,9 @@
   <td><%= task.deadline %></td>
   <td>
     <%= form_tag switch_done_project_task_path(task.project, task), method: :patch do %>
-      <%= submit_tag (task.done ? 'Done' : 'Not done'), class: 'status' %>
+      <%= submit_tag (task.done ? 'Done' : 'Not done'), class: 'status btn btn-light' %>
     <% end %>
   </td>
-  <td><%= link_to 'Edit', edit_project_task_path(task.project, task) %></td>
-  <td><%= link_to 'Remove', [task.project, task], method: :delete, data: { confirm: 'Please confirm. Are you sure?' } %></td>
+  <td><%= link_to 'Edit', edit_project_task_path(task.project, task), class: 'btn btn-link' %></td>
+  <td><%= link_to 'Remove', [task.project, task], method: :delete, data: { confirm: 'Please confirm. Are you sure?' }, class: 'btn btn-link'  %></td>
 </tr>

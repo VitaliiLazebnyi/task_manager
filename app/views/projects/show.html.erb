@@ -3,7 +3,7 @@
 <% if @project.tasks.empty? %>
   <p>There's no Tasks in the Project.</p>
 <% else %>
-  <table>
+  <table class="table">
     <thead>
     <tr>
       <th width="200">Task</th>
@@ -20,4 +20,6 @@
   </table>
 <% end %>
 
-<%= link_to 'Add new Task', new_project_task_path(@project) %>
+<%= link_to 'Add new Task', new_project_task_path(@project), class: 'btn btn-primary btn-lg active' %>
+<br />
+<%= link_to 'Back', projects_path, class: 'btn btn-link' %>

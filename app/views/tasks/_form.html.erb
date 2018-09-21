@@ -5,28 +5,33 @@
     <%= f.label :project %><br>
     <%= f.collection_select :project_id, current_user.projects, :id, :title, {:selected => @task.project.id.to_s}%>
   </div>
+  <br />
 
   <div class="field">
     <%= f.label :title %><br>
     <%= f.text_field :title %>
   </div>
+  <br />
 
   <div class="field">
     <%= f.label :priority %><br>
     <%= f.select :priority, [1,2,3,4] %>
   </div>
+  <br />
 
   <div class="field">
     <%= f.label :deadline %><br>
     <%= f.date_field :deadline, min: Date.today %>
   </div>
+  <br />
 
   <div class="field">
     <%= f.label :done %><br>
-    <%= f.check_box :done %>
+    <%= f.check_box :done, class: 'form-check' %>
   </div>
+  <br />
 
   <div class="actions">
-    <%= f.submit "#{ @task.new_record? ? 'Create' : 'Change' }" %>
+    <%= f.submit "#{ @task.new_record? ? 'Create' : 'Change' }", class: 'btn btn-success' %>
   </div>
 <% end %>
