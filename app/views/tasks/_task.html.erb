@@ -7,10 +7,9 @@
     <% end %>
   </td>
   <td><%= task.deadline %></td>
-  <td><%= task.done ? 'Done.' : 'Not done.' %></td>
   <td>
     <%= form_tag switch_done_project_task_path(task.project, task), method: :patch do %>
-      <%= submit_tag (task.done ? 'Done.' : 'Not done.') %>
+      <%= submit_tag (task.done ? 'Done' : 'Not done'), class: 'status' %>
     <% end %>
   </td>
   <td><%= link_to 'Edit', edit_project_task_path(task.project, task) %></td>

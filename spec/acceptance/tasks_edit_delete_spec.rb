@@ -24,7 +24,7 @@ feature 'Edit and remove Tasks', %q{
 
     # Check presence of old Task data
     expect(page).to have_content old_task_title
-    expect(page).to have_content old_task_status
+    expect(find('.status').value).to eq old_task_status
     expect(page).to have_content old_task_deadline
     expect(find_field('priority').value).to eq old_task_priority
 
@@ -38,10 +38,10 @@ feature 'Edit and remove Tasks', %q{
 
     # Check that task was changed
     expect(page).to_not have_content old_task_title
-    expect(page).to_not have_content old_task_status
+    # expect(page).to_not have_content old_task_status
     expect(page).to have_content new_task_title
     expect(page).to have_content new_task_deadline
-    expect(page).to have_content new_task_status
+    expect(find('.status').value).to eq new_task_status
     expect(find_field('priority').value).to eq new_task_priority
   end
 
@@ -54,7 +54,7 @@ feature 'Edit and remove Tasks', %q{
 
     # Check presence of Task data
     expect(page).to have_content task.title
-    expect(page).to have_content task_status
+    expect(find('.status').value).to eq task_status
 
     click_on 'Remove'
 

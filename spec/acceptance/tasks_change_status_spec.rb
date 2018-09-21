@@ -17,16 +17,16 @@ feature 'Tasks', %q{
     visit project_path(project)
 
     # Check old status
-    expect(page).to have_content old_task_status
+    expect(find('.status').value).to eq old_task_status
 
     click_on old_task_status
 
     # Check that task was changed
-    expect(page).to have_content new_task_status
+    expect(find('.status').value).to eq new_task_status
 
     # Reload page and check again
     visit project_path(project)
-    expect(page).to have_content new_task_status
+    expect(find('.status').value).to eq new_task_status
   end
 end
 

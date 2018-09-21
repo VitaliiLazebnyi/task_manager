@@ -25,6 +25,6 @@ feature 'Create Tasks', %q{
 
     # Check that task was created
     expect(page).to have_content task_title
-    expect(page).to have_content task_status
+    expect(find('.status').value).to eq task_status
   end
 end
