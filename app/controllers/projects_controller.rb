@@ -35,7 +35,6 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-    @project.tasks.each { |t| t.destroy }
     @project.destroy
     redirect_to projects_path
   end
