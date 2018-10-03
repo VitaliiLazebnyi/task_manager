@@ -8,10 +8,6 @@ class Task < ActiveRecord::Base
 
   scope :by_priority, -> { order(:priority) }
 
-  def update_priority(prior)
-    update(priority: prior)
-  end
-
   private
 
   def is_valid_deadline?

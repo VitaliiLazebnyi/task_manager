@@ -50,7 +50,7 @@ class TasksController < ApplicationController
   end
 
   def update_priority
-    @task.update_priority(params[:priority])
+    @task.update(priority: params[:priority])
 
     redirect_to @task.project
   end
