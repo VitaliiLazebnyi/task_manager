@@ -56,7 +56,7 @@ class TasksController < ApplicationController
   end
 
   def switch_done
-    @task.switch_done
+    @task.toggle!(:done)
 
     redirect_to @task.project
   end
