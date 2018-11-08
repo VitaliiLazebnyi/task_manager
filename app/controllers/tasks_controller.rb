@@ -18,7 +18,7 @@ class TasksController < ApplicationController
       # If user changes ProjectId manually
       # in order to add task to someone
       # just render 'new' page again
-      render :new
+      render :new, status: :unauthorized
       return
     elsif @task.save
       redirect_to @task.project
@@ -34,7 +34,7 @@ class TasksController < ApplicationController
       # Should be validated that user can't
       # change tasks in project where he's
       # not owner.
-      render :edit
+      render :edit, status: :unauthorized
       return
     elsif @task.update(task_params)
       redirect_to @task.project
@@ -50,13 +50,13 @@ class TasksController < ApplicationController
   end
 
   def update_priority
-    @task.update_priority(params[:priority])
+    @task.update(priority: params[:priority])
 
     redirect_to @task.project
   end
 
   def switch_done
-    @task.switch_done
+    @task.toggle!(:done)
 
     redirect_to @task.project
   end
